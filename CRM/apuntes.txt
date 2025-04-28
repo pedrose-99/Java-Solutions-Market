@@ -1,0 +1,82 @@
+SILVIA HARÍA ESTO:
+
+1. Usando CommandLineRunner para hacer la gestión de datos en terminal
+
+Spring Boot ofrece una interfaz llamada CommandLineRunner.
+Todo lo que pongas ahí se ejecuta automáticamente al iniciar la app, y podés hacer que lea/escriba desde la terminal (System.in y System.out).
+
+Ejemplo:
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import java.util.Scanner;
+
+@Component
+public class TerminalApp implements CommandLineRunner {
+
+    @Override
+    public void run(String... args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bienvenido al CRM por terminal 🚀");
+        System.out.print("Ingrese el nombre del cliente: ");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Guardando cliente: " + nombre);
+        
+        // Aquí llamarías a tu servicio que guarda en la base de datos
+        // clienteService.guardar(nombre);
+
+        scanner.close();
+    }
+}
+
+Este código va a:
+
+    Imprimir un mensaje en consola.
+
+    Esperar que el usuario escriba algo.
+
+    Luego podrías conectar eso con tu base de datos (por ejemplo, guardar un cliente en PostgreSQL usando tus servicios).
+
+O hacer un bucle (estudiar cual solución es mejor)
+
+Por ejemplo: 
+
+while (true) {
+    System.out.println("Opciones: [crear] [listar] [salir]");
+    String comando = scanner.nextLine();
+
+    if ("crear".equalsIgnoreCase(comando)) {
+        // pedir datos y guardar
+    } else if ("listar".equalsIgnoreCase(comando)) {
+        // mostrar clientes
+    } else if ("salir".equalsIgnoreCase(comando)) {
+        break;
+    } else {
+        System.out.println("Comando no reconocido.");
+    }
+}
+
+
+
+Dos tipos de servicios:
+
+Caso 1: Sin Spring Web (No lo necesitas)
+
+// Aplicación Java que conecta directo a la base y hace algo
+Cliente cliente = clienteRepository.findById(1L).get();
+System.out.println(cliente.getNombre());
+
+No es necesario usar Endpoints
+
+Caso 2: Con Spring Web (Sí lo necesitas)
+
+// Endpoint REST para buscar un cliente desde Postman o desde el navegador
+@GetMapping("/clientes/{id}")
+public Cliente getCliente(@PathVariable Long id) {
+    return clienteService.obtenerCliente(id);
+}
+
+Silvia: instalar PostgreSQL y dbeaver en su ordenador
+PONER CONTRASEÑA 3436
