@@ -10,9 +10,6 @@ Una aplicación de gestión de relaciones con clientes (CRM) construida con Spri
 - [Uso](#uso)
 - [API Endpoints](#api-endpoints)
 
-
-
-
 ##  Tecnologías
 
 - Java 21
