@@ -1,0 +1,26 @@
+Alome instalar en ordenador de silvia nodejs
+
+Crear proyecto angular:
+
+npm install -g @angular/cli =>>instalar angular
+
+para crear el angular usamos 
+
+ng -new CRM-FRONT
+
+para ejecutar el angualr dentro de la carpeta CRM-FRONTEND escribiremos
+
+ng serve
+
+Hemos instalado bootstrap 
+
+npm install bootstrap --save
+
+Para crear una clase dentro de CRM-FRONT
+
+ng g class client
+
+Para crear una lista dentro de CRM-FRONTEND
+
+ng g c client-list
+
