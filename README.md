@@ -8,6 +8,7 @@ Una aplicación de gestión de relaciones con clientes (CRM) construida con Spri
 - [Instalación](#instalación)
 - [Configuración](#configuración)
 - [Uso](#uso)
+- [Automatización con Makefile](#automatización-con-makefile)
 - [API Endpoints](#api-endpoints)
 
 ##  Tecnologías
@@ -58,6 +59,23 @@ Para ejecutar el proyecto podemos usar nuestro IDE o ejecutar en terminal:
 ```bash
     ./mvnw spring-boot:run
 ```
+
+##  Automatización con Makefile
+
+Este proyecto incluye un `Makefile` que facilita el arranque y gestión del backend y frontend.
+
+### Comandos disponibles:
+
+- `make start`: Inicia el backend (Spring Boot) y frontend (Angular) en dos terminales separadas.
+- `make stop`: Detiene ambos procesos. Intenta matar Angular si está corriendo en el puerto 4200.
+- `make clean`: Elimina archivos de log temporales si los hay.
+- `make kill-frontend`: Mata cualquier proceso que esté utilizando el puerto 4200 (usualmente Angular).
+- `make check-deps`: Verifica si tienes las dependencias necesarias según tu sistema operativo (Linux o Windows).
+- `make install-deps-linux`: Instala las dependencias del frontend (Angular) si estás en Linux.
+- `make install-deps-windows`: Instala las dependencias del frontend (Angular) si estás en Windows.
+
+>  Requiere `make` y `gnome-terminal` en Linux para que pueda abrir terminales nuevas automáticamente.
+
 ---
 ## API Endpoints
 Podremos levantar el servidor y acceder a:
