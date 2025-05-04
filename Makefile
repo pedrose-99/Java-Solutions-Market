@@ -1,10 +1,10 @@
 .PHONY: start start-backend start-frontend stop clean install-deps-linux install-deps-windows check-deps-linux check-deps-windows
 
 BACKEND_CMD=spring-boot:run
-FRONTEND_CMD=ng serve
+FRONTEND_CMD=npm run dev
 
 BACKEND_URL=http://localhost:8080
-FRONTEND_URL=http://localhost:4200
+FRONTEND_URL=http://localhost:5173
 
 start: check-deps
 	@echo "🔄 Iniciando backend y frontend en nuevas terminales..."
@@ -12,8 +12,8 @@ start: check-deps
 	@$(MAKE) start-frontend
 	@echo ""
 	@echo "🟢 Accesos rápidos:"
-	@echo "🌐 Angular:  $(FRONTEND_URL)"
-	@echo "🚀 Backend:  $(BACKEND_URL)"
+	@echo "🌐 React (Vite): $(FRONTEND_URL)"
+	@echo "🚀 Backend:       $(BACKEND_URL)"
 	@echo "✅ Ambos procesos iniciados."
 
 start-backend:
@@ -21,8 +21,8 @@ start-backend:
 	gnome-terminal -- bash -c "cd CRM-BACKEND && ./mvnw spring-boot:run; exec bash"
 
 start-frontend:
-	@echo "🌐 Iniciando Angular en una nueva terminal..."
-	gnome-terminal -- bash -c "cd CRM-FRONT && ng serve; exec bash"
+	@echo "🌐 Iniciando React con Vite en una nueva terminal..."
+	gnome-terminal -- bash -c "cd CRM-FRONTEND && npm run dev; exec bash"
 
 check-deps-linux:
 	@echo "🔎 Comprobando dependencias para Linux..."
@@ -36,19 +36,19 @@ check-deps-windows:
 	@npm list --global windows-build-tools > nul 2>&1 && echo "✅ Herramientas de compilación de Windows están instaladas." || (echo "❌ Las herramientas de compilación de Windows no están instaladas. Ejecuta 'npm install --global windows-build-tools'." && exit 1)
 
 install-deps-linux:
-	@if [ ! -d "CRM-FRONT/node_modules" ]; then \
-		echo "📦 Instalando dependencias de Angular para Linux..."; \
-		cd CRM-FRONT && npm install; \
+	@if [ ! -d "CRM-FRONTEND/node_modules" ]; then \
+		echo "📦 Instalando dependencias de React (Vite) para Linux..."; \
+		cd CRM-FRONTEND && npm install; \
 	else \
-		echo "📦 Dependencias de Angular ya instaladas en Linux."; \
+		echo "📦 Dependencias de React ya instaladas en Linux."; \
 	fi
 
 install-deps-windows:
-	@if [ ! -d "CRM-FRONT\node_modules" ]; then \
-		echo "📦 Instalando dependencias de Angular para Windows..."; \
-		cd CRM-FRONT && npm install; \
+	@if [ ! -d "CRM-FRONTEND\\node_modules" ]; then \
+		echo "📦 Instalando dependencias de React (Vite) para Windows..."; \
+		cd CRM-FRONTEND && npm install; \
 	else \
-		echo "📦 Dependencias de Angular ya instaladas en Windows."; \
+		echo "📦 Dependencias de React ya instaladas en Windows."; \
 	fi
 
 check-deps:
@@ -63,12 +63,10 @@ check-deps:
 
 stop:
 	@echo "🛑 Deteniendo procesos..."
-	# Matar el proceso frontend (ng serve) usando el PID
-	@echo "🚀 Deteniendo Angular..."
-	@lsof -ti:4200 | xargs kill -9 
-	@echo "✅ Procesos detenidos."
-	# Matar el proceso backend
+	@echo "🚀 Deteniendo React (Vite)..."
+	@lsof -ti:5173 | xargs kill -9 || echo "⚠️ No se encontró React (Vite) corriendo en el puerto 5173"
 	@pkill -f "$(BACKEND_CMD)" || true
+	@echo "✅ Procesos detenidos."
 
 clean:
 	@echo "🧹 Limpiando archivos de log..."
