@@ -1,0 +1,6 @@
+Cambiar el footer
+Cambiar el readme
+Asegurarse que el makefile esta bien
+
+Rehacer todo el java de nuevo de clients para añadir lastname
+

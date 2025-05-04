@@ -1,26 +1,69 @@
-Alome instalar en ordenador de silvia nodejs
+instalar vitejs
 
-Crear proyecto angular:
+crear un proyecto con 
 
-npm install -g @angular/cli =>>instalar angular
+npm create vite@latest CRM-FRONTEND
 
-para crear el angular usamos 
+Ejecutar en vitejs: 
 
-ng -new CRM-FRONT
+npm run dev
 
-para ejecutar el angualr dentro de la carpeta CRM-FRONTEND escribiremos
+instalar extension segun el navegador que uses:
 
-ng serve
+https://react.dev/learn/react-developer-tools
 
-Hemos instalado bootstrap 
+TODAS LAS INSTALACIONES DENTRO DE LA CARPETA CRM-FRONTEND (ESTO ES PARA DIEGO)
+instalar bootstrap
 
 npm install bootstrap --save
 
-Para crear una clase dentro de CRM-FRONT
+instalar axios
 
-ng g class client
+npm install axios --save
 
-Para crear una lista dentro de CRM-FRONTEND
+instalar root
 
-ng g c client-list
+npm install react-router-dom --save
 
+hacemos import en App.jsx
+
+Crearemos un componente para listar todos los clientes que tenemos
+
+instalar extension: (ES7+ React/Redux/React-Native snippets) en VSCODE
+
+En el folder screens: 
+
+1. Crear React functional component: ListClientComponent.jsx
+
+2. Dentro del archivo escribe rafce (para crear una arrow function) y dale al tabulador. Te creará una funcion en react.
+
+3. Dentro obtienes los datos de la base de datos y creas una tabla para ver los clientes
+
+4. Crear ClientService.js en el folder services
+
+5. Mirar la url donde vamos a recibir los clientes
+
+6. hacer un axios.get de esa url 
+
+7. Vamos a ListClientComponent y usamos useState con dos variables, clients (va a ser donde se guarden las variables y 
+    setClients que va a ser la forma de guardarlos en los clientes)
+
+8. Usamos useEffect para obtener la lista de clientes de service y si da error ponemos el error
+
+9. En el controller class debemos de poner @CrossOrigin("*") 
+
+10. Creamos el Footer y el header (Diego)
+
+11. Ponemos en el App.jsx 
+
+12. Configuramos los route para que cuando pongamos /clients vaya a esa pagina.
+
+13. Crear un component que sea para añadir un clientes
+
+14. ir a ClientListComponents y añadir un boton
+
+15. Le añadimos un evento onClick y creamos una funcion que te lleve a la ruta de ClientComponent 
+
+16. Creamos el formulario y guardamos el cliente.
+
+17. Creamos el metodo post em ClientService y lo llamamos desde saveClient

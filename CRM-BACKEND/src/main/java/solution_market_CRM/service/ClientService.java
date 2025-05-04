@@ -10,7 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import solution_market_CRM.model.Client;
 import solution_market_CRM.repository.ClientRepository;
@@ -29,9 +31,9 @@ public class ClientService implements ClientRepository
     }
 
     @Override
-    public Client getById(Long arg0) 
+    public Client getById(Long id) 
     {
-        return clientRepository.getById(arg0);
+        return clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente no encontrado con id: " + id));
     }
 
     @Override
@@ -61,7 +63,18 @@ public class ClientService implements ClientRepository
     //Falta un update
 
 
-
+    public Client updateClient(Long id, Client newClient) 
+    {
+        Client client  = this.getById(id);
+    
+        client.setName(newClient.getName());
+        client.setLast_name(newClient.getLast_name());
+        client.setAddress(newClient.getAddress());
+        client.setEmail(newClient.getEmail());
+        client.setPhone_number(newClient.getPhone_number());
+    
+        return clientRepository.save(client);
+    }
 
 
     //NO USADOS
