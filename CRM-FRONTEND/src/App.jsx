@@ -21,8 +21,6 @@ function App() {
           <Route path='/add-client' element = {<ClientComponent/>}></Route>
           {/* //http:localhost:5173/update-client/id*/}
           <Route path='/update-client/:client_id' element = {<ClientComponent/>}></Route>
-          {/* //http:localhost:5173/delete-client/id*/}
-          <Route path='/delete-client/:client_id' element = {<ClientComponent/>}></Route>
 
         </Routes>
         {/* <FooterComponent /> */}

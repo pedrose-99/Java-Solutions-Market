@@ -11,3 +11,4 @@ export const getClient = (client_id) => axios.get(REST_API_BASE_URL + client_id)
 export const updateClient = (client_id, client) => axios.put(REST_API_BASE_URL + client_id, client)
 
 export const deleteClient = (client_id) => axios.delete(REST_API_BASE_URL + client_id)
+
