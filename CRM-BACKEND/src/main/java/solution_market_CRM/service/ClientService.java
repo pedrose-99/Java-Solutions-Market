@@ -23,7 +23,6 @@ public class ClientService implements ClientRepository
     @Autowired
     private ClientRepository clientRepository;
 
-
     @Override
     public List<Client> findAll() 
     {

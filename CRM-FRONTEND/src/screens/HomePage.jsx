@@ -1,0 +1,44 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const HomePage = () => {
+  const navigate = useNavigate();
+
+  const goToClients = () => {
+    navigate('/clients');
+  };
+
+  const goToEmployees = () => {
+    navigate('/employees');
+  };
+
+  return (
+    <div style={styles.container}>
+      <h1>Welcome to the CRM System</h1>
+      <div style={styles.buttonContainer}>
+        <button style={styles.button} onClick={goToClients}>View Clients</button>
+        <button style={styles.button} onClick={goToEmployees}>View Employees</button>
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    textAlign: 'center',
+    marginTop: '100px'
+  },
+  buttonContainer: {
+    marginTop: '40px',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '20px'
+  },
+  button: {
+    padding: '15px 30px',
+    fontSize: '16px',
+    cursor: 'pointer'
+  }
+};
+
+export default HomePage;

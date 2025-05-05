@@ -6,3 +6,10 @@ Rehacer todo el java de nuevo de clients para añadir lastname
 
 Inventary Service
 Inventary Controller
+
+Posiblemente añadir el metodo exists en los services de java
+
+posiblemente meter los metodos que necesito en clientRepository para que no me salgan todos los metodos obligatoriamente en client services
+
+hacer por mi cuenta el service y no llamando a una libreria
+

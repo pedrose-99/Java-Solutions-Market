@@ -27,7 +27,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/client/")
-public class ClientController {
+public class ClientController 
+{
     @Autowired
     private ClientService clientService;
 

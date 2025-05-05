@@ -11,12 +11,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import solution_market_CRM.model.Employee;
 import solution_market_CRM.model.Employee;
 import solution_market_CRM.repository.EmployeeRepository;
 
+@Service
 public class EmployeeService implements EmployeeRepository{
 
     @Autowired

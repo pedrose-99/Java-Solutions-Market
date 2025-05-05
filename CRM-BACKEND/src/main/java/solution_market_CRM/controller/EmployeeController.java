@@ -23,7 +23,7 @@ import solution_market_CRM.service.EmployeeService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/employees/")
+@RequestMapping("/api/employee/")
 public class EmployeeController {
     
     @Autowired
@@ -39,7 +39,7 @@ public class EmployeeController {
     private ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
         try {
             Employee employeeSave = employeeService.save(employee);
-            return ResponseEntity.created(new URI("/employee" + employeeSave.getClient_id())).body(employeeSave);
+            return ResponseEntity.created(new URI("/employee" + employeeSave.getEmployee_id())).body(employeeSave);
         } catch (URISyntaxException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
