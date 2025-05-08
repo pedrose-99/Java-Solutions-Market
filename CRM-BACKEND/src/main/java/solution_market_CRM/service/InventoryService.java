@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import solution_market_CRM.model.Inventory;
 import solution_market_CRM.repository.InventoryRepository;
+import solution_market_CRM.repository.SalesRepository;
 
 @Service
 public class InventoryService
@@ -16,6 +17,9 @@ public class InventoryService
     @Autowired
     private InventoryRepository inventoryRepository;
 
+    @Autowired
+    private SalesRepository salesRepository;
+    
     public List<Inventory> findAll()
     {
         return inventoryRepository.findAll();
@@ -39,12 +43,10 @@ public class InventoryService
 
     public void deleteById(int id)
     {
+        if (salesRepository.existsByInventoryId(id)) {
+            throw new IllegalStateException("No se puede eliminar el empleado porque tiene ventas asociadas.");
+        }
         inventoryRepository.deleteById(id);
-    }
-
-    public void delete(Inventory entity)
-    {
-        inventoryRepository.delete(entity);
     }
 
     public Inventory updateInventory(int id, Inventory newInventory) 

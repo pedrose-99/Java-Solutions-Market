@@ -44,7 +44,7 @@ const InventoryComponent = () => {
     function saveorUpdateInventoryProduct(e){
         e.preventDefault();
 
-        const inventoryProduct = {name, description, price, stock}
+        const inventoryProduct = {name, description, price: parseFloat(price), stock: parseInt(stock)}
         console.log(inventoryProduct)
         if (product_id)
         {

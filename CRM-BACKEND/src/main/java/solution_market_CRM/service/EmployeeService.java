@@ -17,12 +17,16 @@ import org.springframework.web.server.ResponseStatusException;
 import solution_market_CRM.model.Employee;
 import solution_market_CRM.model.Employee;
 import solution_market_CRM.repository.EmployeeRepository;
+import solution_market_CRM.repository.SalesRepository;
 
 @Service
 public class EmployeeService 
 {
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private SalesRepository salesRepository;
 
     public List<Employee> findAll() 
     {
@@ -40,15 +44,15 @@ public class EmployeeService
 
     }
 
-    public void deleteById(Integer id) 
+    public void deleteById(Integer id)
     {
+        if (salesRepository.existsByEmployeeId(id)) 
+        {
+            throw new IllegalStateException("No se puede eliminar el empleado porque tiene ventas asociadas.");
+        }
         employeeRepository.deleteById(id);
     }
 
-    public void delete(Employee entity) 
-    {
-        employeeRepository.delete(entity);
-    }
     
     public <S extends Employee> S save(S entity) 
     {

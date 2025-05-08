@@ -17,12 +17,16 @@ import org.springframework.web.server.ResponseStatusException;
 import solution_market_CRM.exception.ResourceNotFound;
 import solution_market_CRM.model.Client;
 import solution_market_CRM.repository.ClientRepository;
+import solution_market_CRM.repository.SalesRepository;
 
 @Service
 public class ClientService 
 {
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private SalesRepository salesRepository;
 
     public List<Client> findAll() 
     {
@@ -34,14 +38,14 @@ public class ClientService
         return clientRepository.findById(id);
     }
 
-    public void delete(Client entity) 
-    {
-        clientRepository.delete(entity);
-    }
-
     public void deleteById(int id) 
     {
+        if (salesRepository.existsByClientId(id)) 
+        {
+            throw new IllegalStateException("No se puede eliminar el cliente porque tiene ventas asociadas.");
+        }
         clientRepository.deleteById(id);
+
     }
 
     public long count() 
