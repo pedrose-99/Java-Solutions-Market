@@ -2,14 +2,10 @@ Cambiar el footer
 Cambiar el readme
 Asegurarse que el makefile esta bien
 
-Rehacer todo el java de nuevo de clients para añadir lastname
+hacer un boton de volver al menu principal
 
-Inventary Service
-Inventary Controller
+hacer bonito el menu principal
 
-Posiblemente añadir el metodo exists en los services de java
+añadir que si te quedas a 0 no puedas seleccionar ese productos
 
-posiblemente meter los metodos que necesito en clientRepository para que no me salgan todos los metodos obligatoriamente en client services
-
-hacer por mi cuenta el service y no llamando a una libreria
 

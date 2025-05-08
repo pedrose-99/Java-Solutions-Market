@@ -14,58 +14,57 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import solution_market_CRM.exception.ResourceNotFound;
 import solution_market_CRM.model.Client;
 import solution_market_CRM.repository.ClientRepository;
 
 @Service
-public class ClientService implements ClientRepository
+public class ClientService 
 {
     @Autowired
     private ClientRepository clientRepository;
 
-    @Override
     public List<Client> findAll() 
     {
         return clientRepository.findAll();
     }
 
-    @Override
-    public Client getById(Long id) 
+    public Optional<Client> getById(int id) 
     {
-        return clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente no encontrado con id: " + id));
+        return clientRepository.findById(id);
     }
 
-    @Override
     public void delete(Client entity) 
     {
         clientRepository.delete(entity);
     }
 
-    @Override
-    public void deleteById(Long id) 
+    public void deleteById(int id) 
     {
         clientRepository.deleteById(id);
     }
 
-    @Override
     public long count() 
     {
         return clientRepository.count();
     }
 
-    @Override
     public <S extends Client> S save(S entity) 
     {
         return clientRepository.save(entity);
     }
 
-    //Falta un update
-
-
-    public Client updateClient(Long id, Client newClient) 
+    public Client updateClient(int id, Client newClient) 
     {
-        Client client  = this.getById(id);
+        Optional<Client> optionalClient  = this.getById(id);
     
+        if (!optionalClient.isPresent())
+        {
+            throw new ResourceNotFound("Cliente no encontrado con id: " + id);
+        }
+
+        Client client = optionalClient.get();
+
         client.setName(newClient.getName());
         client.setLast_name(newClient.getLast_name());
         client.setAddress(newClient.getAddress());
@@ -74,158 +73,5 @@ public class ClientService implements ClientRepository
     
         return clientRepository.save(client);
     }
-
-
-    //NO USADOS
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> ids) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAllByIdInBatch'");
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAllInBatch'");
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<Client> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAllInBatch'");
-    }
-
-    @Override
-    public <S extends Client> List<S> findAll(Example<S> example) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    public <S extends Client> List<S> findAll(Example<S> example, Sort sort) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    public void flush() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'flush'");
-    }
-
-
-    @Override
-    public Client getOne(Long arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getOne'");
-    }
-
-    @Override
-    public Client getReferenceById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReferenceById'");
-    }
-
-    @Override
-    public <S extends Client> List<S> saveAllAndFlush(Iterable<S> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveAllAndFlush'");
-    }
-
-    @Override
-    public <S extends Client> S saveAndFlush(S entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveAndFlush'");
-    }
-
-
-    @Override
-    public List<Client> findAllById(Iterable<Long> ids) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllById'");
-    }
-
-    @Override
-    public <S extends Client> List<S> saveAll(Iterable<S> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
-    }
-
-
-    @Override
-    public void deleteAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAll'");
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Client> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAll'");
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> ids) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAllById'");
-    }
-
-
-
-    @Override
-    public boolean existsById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existsById'");
-    }
-
-    @Override
-    public Optional<Client> findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    @Override
-    public List<Client> findAll(Sort sort) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    public Page<Client> findAll(Pageable pageable) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    public <S extends Client> long count(Example<S> example) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'count'");
-    }
-
-    @Override
-    public <S extends Client> boolean exists(Example<S> example) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'exists'");
-    }
-
-    @Override
-    public <S extends Client> Page<S> findAll(Example<S> example, Pageable pageable) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    public <S extends Client, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findBy'");
-    }
-
-    @Override
-    public <S extends Client> Optional<S> findOne(Example<S> example) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findOne'");
-    }
-
 
 }

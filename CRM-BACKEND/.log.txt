@@ -1,0 +1,44 @@
+2025-05-05T12:37:50.786+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] s.AplicacionGestionDeClientesApplication : Starting AplicacionGestionDeClientesApplication using Java 23.0.1 with PID 246567 (/home/pedro/ProyectoFinal/Java-Solutions-Market/CRM-BACKEND/target/classes started by pedro in /home/pedro/ProyectoFinal/Java-Solutions-Market/CRM-BACKEND)
+2025-05-05T12:37:50.788+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] s.AplicacionGestionDeClientesApplication : No active profile set, falling back to 1 default profile: "default"
+2025-05-05T12:37:50.843+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-05T12:37:50.844+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-05T12:37:51.737+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-05T12:37:51.798+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 3 JPA repository interfaces.
+2025-05-05T12:37:52.409+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-05T12:37:52.428+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-05T12:37:52.429+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-05T12:37:52.505+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-05T12:37:52.505+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1661 ms
+2025-05-05T12:37:52.738+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-05T12:37:52.823+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-05T12:37:52.885+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-05T12:37:53.227+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-05T12:37:53.267+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-05T12:37:53.853+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6cf50558
+2025-05-05T12:37:53.855+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-05T12:37:53.889+02:00  WARN 246567 --- [Aplicacion gestion de clientes] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-05T12:37:53.914+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-05T12:37:54.873+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-05T12:37:54.920+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-05T12:37:55.418+02:00  WARN 246567 --- [Aplicacion gestion de clientes] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-05T12:37:55.863+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-05T12:37:55.893+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-05T12:37:55.904+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] s.AplicacionGestionDeClientesApplication : Started AplicacionGestionDeClientesApplication in 5.6 seconds (process running for 6.035)
+2025-05-05T12:37:59.292+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-05T12:37:59.292+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-05T12:37:59.294+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-05T12:38:14.304+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-05T12:38:14.304+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-05T12:38:14.311+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-05T12:38:14.323+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-05T12:38:14.327+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-05T12:38:14.341+02:00  INFO 246567 --- [Aplicacion gestion de clientes] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

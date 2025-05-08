@@ -54,8 +54,10 @@ const ClientComponent = () => {
         {
             updateClient(client_id, client).then((response) =>{
                 console.log(response.data);
+                alert('Client has been created');
                 navigator('/clients');
             }).catch(error => {
+                alert('Error!');
                 console.error(error);
             })
         }

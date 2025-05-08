@@ -12,12 +12,26 @@ const HomePage = () => {
     navigate('/employees');
   };
 
+  const goToInventory = () => {
+    navigate('/inventory');
+  };
+
+  const goToAddSale = () => {
+    navigate('/add-sale');
+  };
+  const goToSales = () => {
+    navigate('/sales');
+  };
+
   return (
     <div style={styles.container}>
       <h1>Welcome to the CRM System</h1>
       <div style={styles.buttonContainer}>
         <button style={styles.button} onClick={goToClients}>View Clients</button>
         <button style={styles.button} onClick={goToEmployees}>View Employees</button>
+        <button style={styles.button} onClick={goToInventory}>View inventory</button>
+        <button style={styles.button} onClick={goToSales}>View Sales</button>
+        <button style={styles.button} onClick={goToAddSale}>Make a Sale</button>
       </div>
     </div>
   );

@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "inventary")
-public class Inventary
+@Table (name = "inventory")
+public class Inventory
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,10 +19,10 @@ public class Inventary
     private String description;
     private float price;
 
-    public Inventary() {
+    public Inventory() {
     }
     
-    public Inventary(String name, int stock, String description, float price) {
+    public Inventory(String name, int stock, String description, float price) {
         this.name = name;
         this.stock = stock;
         this.description = description;

@@ -59,7 +59,7 @@ const ClientListComponent = () => {
                         <tr key={client.client_id}>
                             <td>{client.client_id}</td>
                             <td>{client.name}</td>
-                            <td>{client.lastName}</td>
+                            <td>{client.last_name}</td>
                             <td>{client.address}</td>
                             <td>{client.email}</td>
                             <td>{client.phone_number}</td>

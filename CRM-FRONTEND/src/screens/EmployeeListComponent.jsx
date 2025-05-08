@@ -60,7 +60,7 @@ const EmployeeListComponent = () => {
                         <tr key={employee.employee_id}>
                             <td>{employee.employee_id}</td>
                             <td>{employee.name}</td>
-                            <td>{employee.lastName}</td>
+                            <td>{employee.last_name}</td>
                             <td>{employee.address}</td>
                             <td>{employee.email}</td>
                             <td>{employee.phone_number}</td>
