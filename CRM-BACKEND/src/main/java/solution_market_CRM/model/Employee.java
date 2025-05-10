@@ -1,6 +1,5 @@
 package solution_market_CRM.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,35 +7,40 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "client")
-public class Client 
+@Table (name = "employee")
+public class Employee 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int client_id;
+    private int employee_id;
 
     private String name;
     private String last_name;
     private String address;
     private String phone_number;
     private String email;
+    private String type;
 
-    public Client(){}
+    public Employee()
+    {
 
-    public Client(String name, String last_name, String address, String phone_number, String email) {
+    }
+
+    public Employee(String name, String last_name, String address, String phone_number, String email, String type) {
         this.name = name;
         this.last_name = last_name;
         this.address = address;
         this.phone_number = phone_number;
         this.email = email;
+        this.type = type;
     }
 
-    public int getClient_id() {
-        return client_id;
+    public int getEmployee_id() {
+        return employee_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getName() {
@@ -79,4 +83,13 @@ public class Client
         this.email = email;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    
 }
