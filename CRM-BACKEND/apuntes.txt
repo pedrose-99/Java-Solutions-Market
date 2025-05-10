@@ -80,3 +80,53 @@ public Cliente getCliente(@PathVariable Long id) {
 
 Silvia: instalar PostgreSQL y dbeaver en su ordenador
 PONER CONTRASEÑA 3436
+
+
+
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
+    @Override
+    public long count() {
+        return employeeRepository.count();
+    }
+
+    @Override
+    public Employee getById(Long id) {
+        return employeeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente no encontrado con id: " + id));
+
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public void delete(Employee entity) {
+        employeeRepository.delete(entity);
+    }
+    @Override
+    public <S extends Employee> S save(S entity) {
+        return employeeRepository.save(entity);
+    }
+
+
+    public Employee updateEmployee(Long id, Employee newEmployee) 
+    {
+        Employee employee  = this.getById(id);
+    
+        employee.setName(newEmployee.getName());
+        employee.setLast_name(newEmployee.getLast_name());
+        employee.setAddress(newEmployee.getAddress());
+        employee.setEmail(newEmployee.getEmail());
+        employee.setPhone_number(newEmployee.getPhone_number());
+        employee.setType(newEmployee.getType());
+
+        return employeeRepository.save(employee);
+    }

@@ -1,0 +1,11 @@
+Cambiar el footer
+Cambiar el readme
+Asegurarse que el makefile esta bien
+
+hacer un boton de volver al menu principal
+
+hacer bonito el menu principal
+
+añadir que si te quedas a 0 no puedas seleccionar ese productos
+
+
