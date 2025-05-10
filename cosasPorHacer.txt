@@ -2,7 +2,10 @@ Cambiar el footer
 Cambiar el readme
 Asegurarse que el makefile esta bien
 
-Rehacer todo el java de nuevo de clients para añadir lastname
+hacer un boton de volver al menu principal
 
-Inventary Service
-Inventary Controller
+hacer bonito el menu principal
+
+añadir que si te quedas a 0 no puedas seleccionar ese productos
+
+

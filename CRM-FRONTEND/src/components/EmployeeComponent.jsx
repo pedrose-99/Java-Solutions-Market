@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { createClient, getClient, updateClient } from '../services/ClientService'
+import { createEmployee, getEmployee, updateEmployee } from '../services/EmployeeService'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const ClientComponent = () => {
+const EmployeeComponent = () => {
     
     const [name, setName] = useState('')
     const [last_name, setLastName] = useState('')
     const [address, setAddress] = useState('')
     const [email, setEmail] = useState('')
     const [phone_number, setPhoneNumber] = useState('')
+    const [type, setType] = useState('')
     
     const navigator = useNavigate();
 
-    const {client_id} = useParams();
+    const {employee_id} = useParams();
 
     function handleName(e){
         setName(e.target.value);
@@ -29,54 +30,60 @@ const ClientComponent = () => {
     function handleAddress(e){
         setAddress(e.target.value);
     }
+    function handleType(e){
+        setType(e.target.value);
+    }
 
     useEffect(() => {
-        if (client_id){
-            getClient(client_id).then((response) => {
+        if (employee_id){
+            getEmployee(employee_id).then((response) => {
                 setName(response.data.name);
                 setLastName(response.data.last_name);
                 setAddress(response.data.address);
                 setEmail(response.data.email);
                 setPhoneNumber(response.data.phone_number);
+                setType(response.data.type);
             }).catch(error => {
                 console.error(error);
             })
         }
-    }, [client_id])
+    }, [employee_id])
 
 
-    function saveorUpdateClient(e){
+    function saveorUpdateEmployee(e){
         e.preventDefault();
 
-        const client = {name, last_name, address, email, phone_number}
-        console.log(client)
-        if (client_id)
+        const employee = {name, last_name, address, email, phone_number, type}
+        console.log(employee)
+        if (employee_id)
         {
-            updateClient(client_id, client).then((response) =>{
+            updateEmployee(employee_id, employee).then((response) =>{
                 console.log(response.data);
-                alert('Client has been created');
-                navigator('/clients');
+                alert('Employee has been created');
+                navigator('/employees');
             }).catch(error => {
-                alert('Error!');
+                alert('Employee error');
                 console.error(error);
             })
         }
         else
         {
-            createClient(client).then((response) => {
+            createEmployee(employee).then((response) => {
                 console.log(response.data);
-                navigator('/clients')
+                alert('Employee has been updated');
+                navigator('/employees')
             }).catch(error => {
+                alert('Employee error');
                 console.error(error);
             })
         }
     }
 
     function pageTitle(){
-        if (client_id){
-            return <h2 className='text-center'>Update Client</h2>
+        if (employee_id){
+            return <h2 className='text-center'>Update employee</h2>
         }
-        return <h2 className='text-center'>Add Client</h2>
+        return <h2 className='text-center'>Add employee</h2>
     }
     return (
     <div className='container'>
@@ -89,12 +96,12 @@ const ClientComponent = () => {
                     <form>
                         <div className='form-group mb-2'>
                             <label className='form-label'>Name: </label>
-                            <input type='text' placeholder='Enter Client Name' name='name' value={name} className='form-control' onChange={handleName}>
+                            <input type='text' placeholder='Enter employee Name' name='name' value={name} className='form-control' onChange={handleName}>
                             </input>
                         </div>
                         <div className='form-group mb-2'>
                             <label className='form-label'>Last Name: </label>
-                            <input type='text' placeholder='Enter Client Last Name' name='lastName' value={last_name} className='form-control' onChange={handleLastName}>
+                            <input type='text' placeholder='Enter employee Last Name' name='lastName' value={last_name} className='form-control' onChange={handleLastName}>
                             </input>
                         </div>
                         <div className='form-group mb-2'>
@@ -112,8 +119,13 @@ const ClientComponent = () => {
                             <input type='text' placeholder='Enter Address' name='address' value={address} className='form-control' onChange={handleAddress}>
                             </input>
                         </div>
+                        <div className='form-group mb-2'>
+                            <label className='form-label'>Type: </label>
+                            <input type='text' placeholder='Enter Type' name='type' value={type} className='form-control' onChange={handleType}>
+                            </input>
+                        </div>
 
-                        <button className='btn btn-success' onClick={saveorUpdateClient}>Submit</button>
+                        <button className='btn btn-success' onClick={saveorUpdateEmployee}>Submit</button>
                     </form>
                 </div>
             </div>
@@ -122,4 +134,4 @@ const ClientComponent = () => {
   )
 }
 
-export default ClientComponent
+export default EmployeeComponent

@@ -23,44 +23,44 @@ import solution_market_CRM.service.EmployeeService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/employees/")
+@RequestMapping("/api/employee/")
 public class EmployeeController {
     
     @Autowired
-    private EmployeeService employeeService;
+    public EmployeeService employeeService;
 
     @GetMapping("employees/")
-    private ResponseEntity<List<Employee>> getAllEmployees() 
+    public ResponseEntity<List<Employee>> getAllEmployees() 
     {
         return ResponseEntity.ok(employeeService.findAll());
     }
 
     @PostMapping("employees/")
-    private ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
         try {
             Employee employeeSave = employeeService.save(employee);
-            return ResponseEntity.created(new URI("/employee" + employeeSave.getClient_id())).body(employeeSave);
+            return ResponseEntity.created(new URI("/employee" + employeeSave.getEmployee_id())).body(employeeSave);
         } catch (URISyntaxException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
     @GetMapping("employees/{employee_id}")
-    private ResponseEntity<Employee> getEmployeeById(@PathVariable Long employee_id)
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable int employee_id)
     {
         Employee employee = employeeService.getById(employee_id);
         return ResponseEntity.ok(employee);
     }
 
     @PutMapping("employees/{employee_id}")
-    private ResponseEntity<Employee> updateEmployee(@PathVariable Long employee_id, @RequestBody Employee updatedEmployee)
+    public ResponseEntity<Employee> updateEmployee(@PathVariable int employee_id, @RequestBody Employee updatedEmployee)
     {
         Employee employee = employeeService.updateEmployee(employee_id, updatedEmployee);
         return ResponseEntity.ok(employee);
     }
 
     @DeleteMapping("employees/{employee_id}")
-    private void deleteEmployee(@PathVariable Long employee_id)
+    public void deleteEmployee(@PathVariable int employee_id)
     {
         employeeService.deleteById(employee_id);
     }
