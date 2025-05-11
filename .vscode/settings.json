@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "CRM/src/main/java/solution_market_CRM",
+        "CRM-BACKEND/src/main/java/solution_market_CRM"
+    ]
+}
