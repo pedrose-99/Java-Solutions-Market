@@ -28,7 +28,7 @@ const ProviderListComponent = () =>
     {
         navigator(`/update-provider/${provider_id}`)
     }
-    function deleteProvider(provider_id)
+    function handleDeleteProvider(provider_id)
     {
         deleteProvider(provider_id)
         .then(() =>
@@ -72,7 +72,7 @@ const ProviderListComponent = () =>
                                     <button className='btn btn-info' onClick={() => updateProvider(provider.provider_id)}>Update</button>
                                 </td>
                                 <td>
-                                    <button className = 'btn btn-danger' onClick={() => deleteProvider(provider.provider_id)}>Delete</button>
+                                    <button className = 'btn btn-danger' onClick={() => handleDeleteProvider(provider.provider_id)}>Delete</button>
                                 </td>
                             </tr>
                         )

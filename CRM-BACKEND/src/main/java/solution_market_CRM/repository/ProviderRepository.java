@@ -7,7 +7,7 @@ import solution_market_CRM.model.Provider;
 
 //Indico que es el Repository
 @Repository
-public interface ProviderRepository extends JpaRepository<Provider, Integer> 
+public interface ProviderRepository extends JpaRepository<Provider, Integer>
 {
     
 }
