@@ -1,4 +1,4 @@
-.PHONY: start start-backend start-frontend stop clean install-deps-linux install-deps-windows check-deps-linux check-deps-windows
+.PHONY: start start-windows start-backend start-frontend stop clean install-deps-linux install-deps-windows check-deps-linux check-deps-windows
 
 BACKEND_CMD=spring-boot:run
 FRONTEND_CMD=npm run dev
@@ -15,6 +15,17 @@ start: check-deps
 	@echo "🌐 React (Vite): $(FRONTEND_URL)"
 	@echo "🚀 Backend:       $(BACKEND_URL)"
 	@echo "✅ Ambos procesos iniciados."
+
+start-windows:
+	@echo "🔄 Iniciando backend y frontend en Git Bash..."
+	@cd /c/Users/Silvi/OneDrive/Documentos/GitHub/Java-Solutions-Market/CRM-BACKEND && start "" "C:/Program Files/Git/bin/bash.exe" -c "./mvnw spring-boot:run; exec bash"
+	@cd /c/Users/Silvi/OneDrive/Documentos/GitHub/Java-Solutions-Market/CRM-FRONTEND && start "" "C:/Program Files/Git/bin/bash.exe" -c "npm install && npm run dev; exec bash"
+	@timeout /t 2 > nul
+	@echo ""
+	@echo "🟢 Accesos rápidos:"
+	@echo "🌐 React (Vite): $(FRONTEND_URL)"
+	@echo "🚀 Backend:       $(BACKEND_URL)"
+	@echo "✅ Ambos procesos iniciados en terminales de Git Bash."
 
 start-backend:
 	@echo "🚀 Iniciando Spring Boot en una nueva terminal..."

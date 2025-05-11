@@ -1,5 +1,7 @@
 import './App.css'
 import ClientListComponent from './screens/ClientListComponent'
+import ProviderListComponent from './screens/ProviderListComponent'
+import ProviderComponent from './components/ProviderComponent'
 import FooterComponent from './components/FooterComponent'
 import HeaderComponent from './components/HeaderComponent'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -23,6 +25,10 @@ function App() {
           <Route path='/clients' element={<ClientListComponent />} />
           <Route path='/add-client' element={<ClientComponent />} />
           <Route path='/update-client/:client_id' element={<ClientComponent />} />
+
+          <Route path='/providers' element={<ProviderListComponent />} />
+          <Route path='/add-provider' element={<ProviderComponent />} />
+          <Route path='/update-provider/:provider_id' element={<ProviderComponent />} />
 
           <Route path='/employees' element={<EmployeeListComponent />} />
           <Route path='/add-employee' element={<EmployeeComponent />} />
