@@ -21,8 +21,10 @@ const HomePage = () => {
   };
   const goToProducts = () => {
     navigate('/products');
-  }
-
+  };
+  const goToBuys = () => {
+    navigate('/buys');
+  };
   const goToAddSale = () => {
     navigate('/add-sale');
   };
@@ -39,6 +41,7 @@ const HomePage = () => {
         <button style={styles.button} onClick={goToEmployees}>View Employees</button>
         <button style={styles.button} onClick={goToInventory}>View inventory</button>
         <button style={styles.button} onClick={goToProducts}>View products</button>
+        <button style={styles.button} onClick={goToBuys}>View buys</button>
         <button style={styles.button} onClick={goToSales}>View Sales</button>
         <button style={styles.button} onClick={goToAddSale}>Make a Sale</button>
       </div>
