@@ -13,6 +13,9 @@ import InventoryListComponent from './screens/InventoryListComponent'
 import InventoryComponent from './components/InventoryComponent'
 import SalesComponent from './components/SalesComponent'
 import SalesListComponent from './screens/SalesListComponent'
+import ProductListComponent from './screens/ProductListComponent'
+import ProductComponent from './components/ProductComponent'
+
 
 function App() {
   return (
@@ -33,6 +36,10 @@ function App() {
           <Route path='/employees' element={<EmployeeListComponent />} />
           <Route path='/add-employee' element={<EmployeeComponent />} />
           <Route path='/update-employee/:employee_id' element={<EmployeeComponent />} />
+
+          <Route path='/products' element={<ProductListComponent/>} />
+          <Route path='/add-product' element={<ProductComponent/>} />
+          <Route path='/update-product/:product_id' element={<ProductComponent />} />
 
           <Route path='/inventory' element={<InventoryListComponent />} />
           <Route path='/add-inventory-product' element={<InventoryComponent />} />
