@@ -49,6 +49,8 @@ const ProductListComponent = () =>
                         <th>Stock</th>
                         <th>Decription</th>
                         <th>Price</th>
+                        <th>Provider id</th>
+                        <th>Provider name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +62,8 @@ const ProductListComponent = () =>
                                 <td>{product.stock}</td>
                                 <td>{product.description}</td>
                                 <td>{product.price}</td>
+                                <td>{product.provider.provider_id}</td>
+                                <td>{product.provider.name}</td>
                                 <td>
                                     <button className='btn btn-danger' onClick={() => handleDeleteProduct(product.product_id)}>Delete</button>
 

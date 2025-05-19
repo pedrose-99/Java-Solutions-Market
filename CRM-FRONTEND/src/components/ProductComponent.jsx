@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { createProduct, getProduct , updateProduct } from "../services/ProductService"
 import { useNavigate, useParams } from "react-router-dom"
+import { listProviders } from "../services/ProviderService"
 
 const ProductComponent = () =>
 {
@@ -8,8 +9,15 @@ const ProductComponent = () =>
     const [stock, setStock] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [providers, setProviders] = useState([])
+    const [selectedProvider, setSelectedProvider] = useState('')
 
     const navigator = useNavigate();
+
+    useEffect(() =>
+    {
+        listProviders().then((response) => setProviders(response.data));
+    }, []);
 
     const {product_id} = useParams();
 
@@ -40,6 +48,7 @@ const ProductComponent = () =>
                 setStock(response.data.stock);
                 setDescription(response.data.description);
                 setPrice(response.data.price);
+                setSelectedProvider(response.data.provider);
 
             }).catch(error =>
             {
@@ -52,7 +61,12 @@ const ProductComponent = () =>
     {
         e.preventDefault();
 
-        const product = {name, stock, description, price}
+        const product = {name, stock, description, price, 
+            provider:
+            {
+                "provider_id": selectedProvider
+            }
+        }
         console.log(product);
         if(product_id)
         {
@@ -96,7 +110,7 @@ const ProductComponent = () =>
                     {
                         pageTitle()
                     }
-                    <div className="card body">
+                    <div className="card-body">
                         <form>
                             <div className="form-group mb-2">
                                 <label className="form-label">Name: </label>
@@ -121,7 +135,17 @@ const ProductComponent = () =>
                                 <input type="text" placeholder="Enter Product price" name='price' value={price} className="form-control" onChange={handlePrice}>
                                 </input>
                             </div>
-
+                            <div className='form-group mb-2'>
+                                <label>Provider</label>
+                                <select className='form-control mb-2' onChange={(e) => setSelectedProvider(e.target.value)} value={selectedProvider}>
+                                <option value=''>Select a provider</option>
+                                {providers.map((provider) => (
+                                    <option key={provider.provider_id} value={provider.provider_id}>
+                                    {provider.name}
+                                    </option>
+                                ))}
+                                </select>
+                            </div>
                             <button className="btn btn-success" onClick={saveorUpdateProduct}>Submit</button>
                         </form>
                     </div>

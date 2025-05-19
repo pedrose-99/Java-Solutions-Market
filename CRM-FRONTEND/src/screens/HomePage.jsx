@@ -55,7 +55,8 @@ const styles = {
     marginTop: '40px',
     display: 'flex',
     justifyContent: 'center',
-    gap: '20px'
+    gap: '20px',
+    flexDirection: 'column'
   },
   button: {
     padding: '15px 30px',
