@@ -8,6 +8,10 @@ const HomePage = () => {
     navigate('/clients');
   };
 
+  const goToProviders = () => {
+    navigate('/providers');
+  };
+
   const goToEmployees = () => {
     navigate('/employees');
   };
@@ -28,6 +32,7 @@ const HomePage = () => {
       <h1>Welcome to the CRM System</h1>
       <div style={styles.buttonContainer}>
         <button style={styles.button} onClick={goToClients}>View Clients</button>
+        <button style={styles.button} onClick={goToProviders}>View Providers</button>
         <button style={styles.button} onClick={goToEmployees}>View Employees</button>
         <button style={styles.button} onClick={goToInventory}>View inventory</button>
         <button style={styles.button} onClick={goToSales}>View Sales</button>

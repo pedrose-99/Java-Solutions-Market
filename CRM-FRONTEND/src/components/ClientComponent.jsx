@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createClient, getClient, updateClient } from '../services/ClientService'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -54,7 +54,7 @@ const ClientComponent = () => {
         {
             updateClient(client_id, client).then((response) =>{
                 console.log(response.data);
-                alert('Client has been created');
+                alert('Client has been updated');
                 navigator('/clients');
             }).catch(error => {
                 alert('Error!');
@@ -65,6 +65,7 @@ const ClientComponent = () => {
         {
             createClient(client).then((response) => {
                 console.log(response.data);
+                alert('Client has been created');
                 navigator('/clients')
             }).catch(error => {
                 console.error(error);
