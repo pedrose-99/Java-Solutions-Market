@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+import solution_market_CRM.bills.Bill;
+import solution_market_CRM.model.Client;
 import solution_market_CRM.model.Inventory;
 import solution_market_CRM.model.Sales;
+import solution_market_CRM.repository.ClientRepository;
 import solution_market_CRM.repository.InventoryRepository;
 import solution_market_CRM.repository.SalesRepository;
 
@@ -20,6 +23,9 @@ public class SalesService
 
     @Autowired
     private InventoryRepository productRepository;
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     public List<Sales> findAll()
     {
@@ -60,11 +66,14 @@ public class SalesService
     @Transactional
     public Sales save(Sales sale)
     {
-        if (sale.getProduct() != null) 
+        Bill factura = new Bill();
+        Inventory product = null;
+
+        if (sale.getProduct() != null)
         {
             int productId = sale.getProduct().getProduct_id();
     
-            Inventory product = productRepository.findById(productId)
+            product = productRepository.findById(productId)
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
     
             int newStock = product.getStock() - sale.getTotal_sold();
@@ -76,8 +85,11 @@ public class SalesService
             product.setStock(newStock);
             productRepository.save(product);
         }
-    
-        return salesRepository.save(sale);
+        Sales saleReturn = salesRepository.save(sale);
+        Client client = clientRepository.findById(sale.getClient().getClient_id()).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));;
+        factura.generateBill(sale, product, client);
+
+        return saleReturn;
     }
 
 }
