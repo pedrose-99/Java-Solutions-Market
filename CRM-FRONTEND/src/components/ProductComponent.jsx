@@ -68,31 +68,17 @@ const ProductComponent = () =>
             }
         }
         console.log(product);
-        if(product_id)
+        
+        createProduct(product).then((response) =>
         {
-            updateProduct(product_id, product).then((response) =>
-            {
-                console.log(response.data)
-                alert('Product has been updated');
-                navigator('/products')
-            }).catch(error =>
-            {
-                alert('Error');
-                console.error(error);
-            })
-        }
-        else
+            console.log(response.data);
+            alert('Product has been created');
+            navigator('/products')
+        }).catch(error =>
         {
-            createProduct(product).then((response) =>
-            {
-                console.log(response.data);
-                alert('Product has been created');
-                navigator('/products')
-            }).catch(error =>
-            {
-                console.error(error);
-            })
-        }
+            console.error(error);
+        })
+        
     }
 
     function pageTitle()

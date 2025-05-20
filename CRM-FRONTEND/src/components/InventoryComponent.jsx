@@ -49,6 +49,7 @@ const InventoryComponent = () => {
         if (product_id)
         {
             updateInventoryProduct(product_id, inventoryProduct).then((response) =>{
+                alert('inventory has been updated')
                 console.log(response.data);
                 navigator('/inventory');
             }).catch(error => {
@@ -58,6 +59,7 @@ const InventoryComponent = () => {
         else
         {
             createInventoryProduct(inventoryProduct).then((response) => {
+                alert('product has been added to inventory')
                 console.log(response.data);
                 navigator('/inventory')
             }).catch(error => {

@@ -6,16 +6,19 @@ const FooterComponent = () => {
         <footer className="footer">
             <div className="footer-container">
                 <div className="footer-section">
-                <h4>CRM App</h4>
+                <h4><a  class="title" href='/'>CRM App</a></h4>
                 <p>Gestión eficiente de clientes, productos y empleados.</p>
                 </div>
                 <div className="footer-section">
                 <h4>Secciones</h4>
                 <ul>
-                    <li><a href="/clientes">Clientes</a></li>
-                    <li><a href="/productos">Productos</a></li>
-                    <li><a href="/empleados">Empleados</a></li>
-                    <li><a href="/reportes">Reportes</a></li>
+                    <li><a href="/clients">Clientes</a></li>
+                    <li><a href="/products">Productos</a></li>
+                    <li><a href="/employees">Empleados</a></li>
+                    <li><a href="/providers">Proovedores</a></li>
+                    <li><a href="/inventory">Inventario</a></li>
+                    <li><a href="/sales">Ventas</a></li>
+                    <li><a href="/buys">Compras</a></li>
                 </ul>
                 </div>
                 <div className="footer-section">
