@@ -75,7 +75,7 @@ const SalesComponent = () => {
     createSale(saleData)
       .then((response) => {
         console.log('Venta realizada:', response.data);
-        alert('Sale has been successfully created!');
+        alert('Sale has been successfully done');
         navigate('/sales');
       })
       .catch((error) => {

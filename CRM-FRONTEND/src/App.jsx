@@ -15,6 +15,8 @@ import SalesComponent from './components/SalesComponent'
 import SalesListComponent from './screens/SalesListComponent'
 import ProductListComponent from './screens/ProductListComponent'
 import ProductComponent from './components/ProductComponent'
+import BuysListComponent from './screens/BuysListComponent'
+import BuysComponent from './components/BuysComponent'
 
 
 function App() {
@@ -47,8 +49,11 @@ function App() {
 
           <Route path='/add-sale' element={<SalesComponent />} /> {/* NUEVA RUTA */}
           <Route path='/sales' element={<SalesListComponent/>}/>
+
+          <Route path='/add-buy' element={<BuysComponent />} />
+          <Route path='/buys' element={<BuysListComponent/>}/>
         </Routes>
-        {/* <FooterComponent /> */}
+        { <FooterComponent /> }
       </BrowserRouter>
     </>
   )
