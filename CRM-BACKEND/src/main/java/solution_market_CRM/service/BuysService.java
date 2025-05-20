@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.transaction.Transactional;
 import solution_market_CRM.model.Buys;
-import solution_market_CRM.model.Employee;
-import solution_market_CRM.model.Inventory;
+
 import solution_market_CRM.model.Product;
 import solution_market_CRM.repository.BuysRepository;
 import solution_market_CRM.repository.EmployeeRepository;
