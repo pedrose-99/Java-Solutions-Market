@@ -4,15 +4,21 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+import solution_market_CRM.bills.BillBuy;
 import solution_market_CRM.model.Buys;
+import solution_market_CRM.model.Inventory;
+
 
 import solution_market_CRM.model.Product;
 import solution_market_CRM.repository.BuysRepository;
 import solution_market_CRM.repository.EmployeeRepository;
+import solution_market_CRM.repository.InventoryRepository;
 import solution_market_CRM.repository.ProductRepository;
 
+@Service
 public class BuysService 
 {
     @Autowired
@@ -23,6 +29,9 @@ public class BuysService
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private InventoryService inventoryService;
 
     public List<Buys> findAll()
     {
@@ -65,6 +74,9 @@ public class BuysService
     public Buys save(Buys buy)
     {
         Product product = null;
+        List<Inventory> inventoryList = inventoryService.findAll();
+        Boolean newInventory = true;
+        BillBuy buyBill = new BillBuy();
 
         if(buy.getProduct() != null)
         {
@@ -73,16 +85,31 @@ public class BuysService
             product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
             int newStock = product.getStock() - buy.getStock();
 
+            for (Inventory inventory : inventoryList)
+            {
+                if (inventory.getName().equals(product.getName()))
+                {
+                    inventory.setStock(buy.getStock()+ inventory.getStock());
+                    inventoryService.save(inventory);
+                    newInventory = false;
+                }
+            }
             if(newStock < 0 )
             {
                 throw new RuntimeException("Stock insuficiente para realizar la compra.");
             }
-
+            if (newInventory)
+            {
+                float price = (buy.getTotal_price()/buy.getStock()) * 1.20f;
+                Inventory inventory = new Inventory(product.getName(), buy.getStock(), product.getDescription(), price);
+                inventoryService.save(inventory);
+            }
             product.setStock(newStock);
             productRepository.save(product);
         }
 
         Buys buyReturn = buysRepository.save(buy);
+        buyBill.generateBill(buy, product);
         return buyReturn;
     }
 

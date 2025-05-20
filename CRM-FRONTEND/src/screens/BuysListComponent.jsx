@@ -49,8 +49,8 @@ const BuysListComponent = () =>
                         <th>Employee</th>
                         <th>Product</th>
                         <th>Stock</th>
-                        <th>Description</th>
                         <th>Total price</th>
+                        <th>Provider</th>
                         <th>Delete</th>
                     </tr>
                 </thead>    
@@ -62,8 +62,8 @@ const BuysListComponent = () =>
                                 <td>{buy.employee.name}</td>
                                 <td>{buy.product.name}</td>
                                 <td>{buy.stock}</td>
-                                <td>{buy.description}</td>
                                 <td>{buy.total_price}</td>
+                                <td>{buy.product.provider.name}</td>
                                 <td>
                                     <button className='btn btn-danger' onClick={() => handleDeleteBuy(buy.buy_id)}>Delete</button>
                                 </td>

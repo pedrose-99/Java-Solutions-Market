@@ -53,7 +53,7 @@ function App() {
           <Route path='/add-buy' element={<BuysComponent />} />
           <Route path='/buys' element={<BuysListComponent/>}/>
         </Routes>
-        {/* <FooterComponent /> */}
+        { <FooterComponent /> }
       </BrowserRouter>
     </>
   )

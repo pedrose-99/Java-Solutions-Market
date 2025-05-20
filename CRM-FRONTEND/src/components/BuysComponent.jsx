@@ -12,8 +12,6 @@ const BuysComponent = () =>
     const [selectedProduct, setSelectedProduct] = useState('');
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState('');
-    const [stock, setStock] = useState('');
-    const [description, setDescription] = useState('');
     const [totalPrice, setTotalPrice] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [maxQuantity, setMaxQuantity] = useState(1);
@@ -26,15 +24,6 @@ const BuysComponent = () =>
         listEmployees().then((response) => setEmployees(response.data));
     }, []);
     
-    function handleDescription(e)
-    {
-        setDescription(e.target.value);
-    }
-
-    function handleStock(e)
-    {
-        setStock(e.target.value);
-    }
 
     const handleQuantityChange = (e) => 
     {
@@ -74,8 +63,8 @@ const BuysComponent = () =>
         }
         const buyData = 
         {
-            totalPrice: totalPrice,
-            total_bought: quantity,
+            total_price: totalPrice,
+            stock: quantity,
             
             product:
             {
@@ -113,7 +102,7 @@ const BuysComponent = () =>
 
                 <div className='form-group mb-2'>
                     <label>Producto</label>
-                    <select className='form-control mb-2' onChange={(e) => setSelectedProduct(e.target.value)} value={selectedProduct}>
+                    <select className='form-control mb-2' onChange={handleProductChange} value={selectedProduct}>
                     <option value=''>Select a product</option>
                     {products.map((product) => (
                         <option key={product.product_id} value={product.product_id}>
@@ -132,7 +121,7 @@ const BuysComponent = () =>
                     >
                     <option value=''>Select an employee</option>
                     {employees.map((employee) => (
-                        <option key={employee.id} value={employee.employee_id}>
+                        <option key={employee.employee_id} value={employee.employee_id}>
                         {employee.name}
                         </option>
                     ))}
@@ -155,17 +144,6 @@ const BuysComponent = () =>
                     </select>
                 </div>
 
-                <div className="form-group mb-2">
-                    <label className="form-label">Stock: </label>
-                    <input type="number" placeholder="Enter Product stock" name='stock' value={stock} className="form-control" onChange={handleStock}>
-                    </input>
-                </div>
-
-                <div className="form-group mb-2">
-                    <label className="form-label">Description: </label>
-                    <input type="text" placeholder="Enter Product description" name='description' value={description} className="form-control" onChange={handleDescription}>
-                    </input>
-                </div>
 
                 <div className='form-group mb-2'>
                     <label>Precio Total: {totalPrice} €</label>

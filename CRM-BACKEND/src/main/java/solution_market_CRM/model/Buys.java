@@ -17,8 +17,7 @@ public class Buys
     private int buy_id;
 
     private int stock;
-    private String descripcion;
-    private int precio_unitario;
+    private int total_price;
 
     @ManyToOne
     @JoinColumn(name= "product_id")
@@ -31,10 +30,9 @@ public class Buys
     public Buys() {
     }
 
-    public Buys(int stock, String descripcion, int precio_unitario, Product product, Employee employee) {
+    public Buys(int stock, int total_price, Product product, Employee employee) {
         this.stock = stock;
-        this.descripcion = descripcion;
-        this.precio_unitario = precio_unitario;
+        this.total_price = total_price;
         this.product = product;
         this.employee = employee;
     }
@@ -55,20 +53,12 @@ public class Buys
         this.stock = stock;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public int getTotal_price() {
+        return total_price;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public int getPrecio_unitario() {
-        return precio_unitario;
-    }
-
-    public void setPrecio_unitario(int precio_unitario) {
-        this.precio_unitario = precio_unitario;
+    public void setTotal_price(int total_price) {
+        this.total_price = total_price;
     }
 
     public Product getProduct() {
@@ -87,5 +77,5 @@ public class Buys
         this.employee = employee;
     }
 
-    
+
 }

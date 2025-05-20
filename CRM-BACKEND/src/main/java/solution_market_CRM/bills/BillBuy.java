@@ -7,11 +7,12 @@ import java.time.LocalDate;
 
 import solution_market_CRM.model.Client;
 import solution_market_CRM.model.Inventory;
-import solution_market_CRM.model.Sales;
+import solution_market_CRM.model.Product;
+import solution_market_CRM.model.Buys;
 
-public class Bill
+public class BillBuy
 {
-    public Bill(){}
+    public BillBuy(){}
     public double getPorcentajeIva(String description)
     {
         double iva;
@@ -45,44 +46,50 @@ public class Bill
         double baseImponible = getBaseImponible(total, description);
         return (total - baseImponible);
     }
-    public void generateBill(Sales sale, Inventory product, Client client)
+    public void generateBill(Buys buy, Product product)
     {
-        String nombre = "factura_"+sale.getSales_id()+".txt";
-        String ruta = "facturas/" + nombre;
+        String nombre = "factura_venta_"+buy.getBuy_id()+".txt";
+        String ruta = "facturas/facturas_compras/" + nombre;
         LocalDate date = LocalDate.now();
-        double importe = sale.getTotal_price();
+        double importe = buy.getTotal_price();
 
         try (BufferedWriter wr = new BufferedWriter(new FileWriter(ruta)))
         {
             wr.write("----------------------------------------------------------\n");
-            wr.write("Factura "+sale.getSales_id()+"\n");
+            wr.write("----------------------------------------------------------\n");
+            wr.write("Factura de compra "+buy.getBuy_id()+"\n");
             wr.write("----------------------------------------------------------\n");
             wr.write("Detalles de factura"+"\n");
             wr.write("----------------------------------------------------------\n");
             wr.write("Fecha: " + date + "\n");
+            wr.write("----------------------------------------------------------\n");
             wr.write("Tema: " + product.getName()+"\n");
             wr.write("----------------------------------------------------------\n");
             wr.write("Importe Total + " + importe+"\n");
             wr.write("----------------------------------------------------------\n");
             wr.write("Cliente\n");
             wr.write("----------------------------------------------------------\n");
-            wr.write("Factura a " + client.getName() + " " + client.getLast_name() + "\n");
+            wr.write("Factura a Nexora Tech\n");
             wr.write("----------------------------------------------------------\n");
-            wr.write("Dirección: " + client.getAddress()+"\n");
+            wr.write("Dirección: Antartida\n");
             wr.write("----------------------------------------------------------\n");
-            wr.write("Teléfono: " + client.getPhone_number()+"\n");
+            wr.write("Teléfono: 698712098\n");
             wr.write("----------------------------------------------------------\n");
-            wr.write("Correo electrónico: " + client.getEmail()+"\n");
+            wr.write("Correo electrónico: nexoraTech@gmail.com\n");
             wr.write("----------------------------------------------------------\n");
-            wr.write("Resumen del pago");
+            wr.write("----------------------------------------------------------\n");
+            wr.write("Resumen del pago\n");
+            wr.write("----------------------------------------------------------\n");
             wr.write("----------------------------------------------------------\n");
             wr.write("Tipo de artículo: " +product.getName()+"\n");
             wr.write("Descripción: "+ product.getDescription() +"\n");
-            wr.write("Unidades: "+ sale.getTotal_sold()+"\n");
+            wr.write("Unidades: "+ buy.getStock()+"\n");
             wr.write("Precio unidad: "+ product.getPrice()+"\n");
+            wr.write("Porcentaje iva: " + getPorcentajeIva(product.getDescription()) + "\n");
             wr.write("Base imponible: "+getBaseImponible(importe, product.getDescription()) +"\n");
             wr.write("Iva: "+ getIva(importe, product.getDescription()) +"\n");
             wr.write("Total: "+ importe +"\n");
+            wr.write("----------------------------------------------------------\n");
             wr.write("----------------------------------------------------------\n");
         }
         catch (IOException e)
@@ -91,3 +98,4 @@ public class Bill
         }
     }
 }
+
