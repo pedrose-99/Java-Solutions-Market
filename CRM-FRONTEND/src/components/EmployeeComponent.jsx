@@ -59,7 +59,7 @@ const EmployeeComponent = () => {
         {
             updateEmployee(employee_id, employee).then((response) =>{
                 console.log(response.data);
-                alert('Employee has been created');
+                alert('Employee has been updated');
                 navigator('/employees');
             }).catch(error => {
                 alert('Employee error');
@@ -70,7 +70,7 @@ const EmployeeComponent = () => {
         {
             createEmployee(employee).then((response) => {
                 console.log(response.data);
-                alert('Employee has been updated');
+                alert('Employee has been created');
                 navigator('/employees')
             }).catch(error => {
                 alert('Employee error');

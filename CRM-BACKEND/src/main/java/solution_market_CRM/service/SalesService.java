@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
-import solution_market_CRM.bills.Bill;
+import solution_market_CRM.bills.BillSale;
 import solution_market_CRM.model.Client;
 import solution_market_CRM.model.Inventory;
 import solution_market_CRM.model.Sales;
@@ -66,7 +66,7 @@ public class SalesService
     @Transactional
     public Sales save(Sales sale)
     {
-        Bill factura = new Bill();
+        BillSale factura = new BillSale();
         Inventory product = null;
 
         if (sale.getProduct() != null)

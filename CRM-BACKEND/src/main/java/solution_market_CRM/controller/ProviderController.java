@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import solution_market_CRM.model.Client;
 import solution_market_CRM.model.Provider;
 import solution_market_CRM.service.ProviderService;
 

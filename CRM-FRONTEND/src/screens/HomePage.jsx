@@ -19,7 +19,12 @@ const HomePage = () => {
   const goToInventory = () => {
     navigate('/inventory');
   };
-
+  const goToProducts = () => {
+    navigate('/products');
+  };
+  const goToBuys = () => {
+    navigate('/buys');
+  };
   const goToAddSale = () => {
     navigate('/add-sale');
   };
@@ -35,8 +40,9 @@ const HomePage = () => {
         <button style={styles.button} onClick={goToProviders}>View Providers</button>
         <button style={styles.button} onClick={goToEmployees}>View Employees</button>
         <button style={styles.button} onClick={goToInventory}>View inventory</button>
+        <button style={styles.button} onClick={goToProducts}>View products</button>
+        <button style={styles.button} onClick={goToBuys}>View buys</button>
         <button style={styles.button} onClick={goToSales}>View Sales</button>
-        <button style={styles.button} onClick={goToAddSale}>Make a Sale</button>
       </div>
     </div>
   );
@@ -45,13 +51,17 @@ const HomePage = () => {
 const styles = {
   container: {
     textAlign: 'center',
-    marginTop: '100px'
+    marginTop: '100px',
+    
   },
   buttonContainer: {
     marginTop: '40px',
     display: 'flex',
     justifyContent: 'center',
-    gap: '20px'
+    gap: '20px',
+    flexDirection: 'column',
+    maxWidth: '200px',
+    marginLeft: '650px'
   },
   button: {
     padding: '15px 30px',

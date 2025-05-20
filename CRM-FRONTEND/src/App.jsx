@@ -13,6 +13,11 @@ import InventoryListComponent from './screens/InventoryListComponent'
 import InventoryComponent from './components/InventoryComponent'
 import SalesComponent from './components/SalesComponent'
 import SalesListComponent from './screens/SalesListComponent'
+import ProductListComponent from './screens/ProductListComponent'
+import ProductComponent from './components/ProductComponent'
+import BuysListComponent from './screens/BuysListComponent'
+import BuysComponent from './components/BuysComponent'
+
 
 function App() {
   return (
@@ -34,14 +39,21 @@ function App() {
           <Route path='/add-employee' element={<EmployeeComponent />} />
           <Route path='/update-employee/:employee_id' element={<EmployeeComponent />} />
 
+          <Route path='/products' element={<ProductListComponent/>} />
+          <Route path='/add-product' element={<ProductComponent/>} />
+          <Route path='/update-product/:product_id' element={<ProductComponent />} />
+
           <Route path='/inventory' element={<InventoryListComponent />} />
           <Route path='/add-inventory-product' element={<InventoryComponent />} />
           <Route path='/update-inventory-product/:product_id' element={<InventoryComponent />} />
 
           <Route path='/add-sale' element={<SalesComponent />} /> {/* NUEVA RUTA */}
           <Route path='/sales' element={<SalesListComponent/>}/>
+
+          <Route path='/add-buy' element={<BuysComponent />} />
+          <Route path='/buys' element={<BuysListComponent/>}/>
         </Routes>
-        {/* <FooterComponent /> */}
+        { <FooterComponent /> }
       </BrowserRouter>
     </>
   )
