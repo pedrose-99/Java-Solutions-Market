@@ -104,7 +104,9 @@ const BuysComponent = () =>
                     <label>Producto</label>
                     <select className='form-control mb-2' onChange={handleProductChange} value={selectedProduct}>
                     <option value=''>Select a product</option>
-                    {products.map((product) => (
+                    {products
+                    .filter((product) => product.stock > 0)
+                    .map((product) => (
                         <option key={product.product_id} value={product.product_id}>
                         {product.name}
                         </option>

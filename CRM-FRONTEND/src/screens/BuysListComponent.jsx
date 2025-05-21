@@ -53,7 +53,7 @@ const BuysListComponent = () =>
                         <th>Provider</th>
                         <th>Delete</th>
                     </tr>
-                </thead>    
+                </thead>
                 <tbody>
                     {
                         buys.map(buy =>

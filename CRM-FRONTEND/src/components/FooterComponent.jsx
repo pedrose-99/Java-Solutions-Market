@@ -6,7 +6,7 @@ const FooterComponent = () => {
         <footer className="footer">
             <div className="footer-container">
                 <div className="footer-section">
-                <h4><a  class="title" href='/'>CRM App</a></h4>
+                <h4><a  className="title" href='/'>CRM App</a></h4>
                 <p>Gestión eficiente de clientes, productos y empleados.</p>
                 </div>
                 <div className="footer-section">

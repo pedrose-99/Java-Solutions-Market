@@ -25,49 +25,26 @@ const HomePage = () => {
   const goToBuys = () => {
     navigate('/buys');
   };
-  const goToAddSale = () => {
-    navigate('/add-sale');
-  };
+
   const goToSales = () => {
     navigate('/sales');
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container-home">
       <h1>Welcome to the CRM System</h1>
-      <div style={styles.buttonContainer}>
-        <button style={styles.button} onClick={goToClients}>View Clients</button>
-        <button style={styles.button} onClick={goToProviders}>View Providers</button>
-        <button style={styles.button} onClick={goToEmployees}>View Employees</button>
-        <button style={styles.button} onClick={goToInventory}>View inventory</button>
-        <button style={styles.button} onClick={goToProducts}>View products</button>
-        <button style={styles.button} onClick={goToBuys}>View buys</button>
-        <button style={styles.button} onClick={goToSales}>View Sales</button>
+      <div className="button-container">
+        <button className="crm-button" onClick={goToClients}>View Clients</button>
+        <button className="crm-button" onClick={goToProviders}>View Providers</button>
+        <button className="crm-button" onClick={goToEmployees}>View Employees</button>
+        <button className="crm-button" onClick={goToInventory}>View inventory</button>
+        <button className="crm-button" onClick={goToProducts}>View products</button>
+        <button className="crm-button" onClick={goToBuys}>View buys</button>
+        <button className="crm-button" onClick={goToSales}>View Sales</button>
       </div>
     </div>
   );
 };
 
-const styles = {
-  container: {
-    textAlign: 'center',
-    marginTop: '100px',
-    
-  },
-  buttonContainer: {
-    marginTop: '40px',
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '20px',
-    flexDirection: 'column',
-    maxWidth: '200px',
-    marginLeft: '650px'
-  },
-  button: {
-    padding: '15px 30px',
-    fontSize: '16px',
-    cursor: 'pointer'
-  }
-};
 
 export default HomePage;
