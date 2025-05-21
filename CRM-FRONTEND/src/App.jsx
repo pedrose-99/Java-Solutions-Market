@@ -23,7 +23,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <HeaderComponent />
+        <main style={{ flex: 1 }}>
         <Routes>
           <Route path='/' element={<HomePage />} />
 
@@ -47,13 +49,15 @@ function App() {
           <Route path='/add-inventory-product' element={<InventoryComponent />} />
           <Route path='/update-inventory-product/:product_id' element={<InventoryComponent />} />
 
-          <Route path='/add-sale' element={<SalesComponent />} /> {/* NUEVA RUTA */}
+          <Route path='/add-sale' element={<SalesComponent />} />
           <Route path='/sales' element={<SalesListComponent/>}/>
 
           <Route path='/add-buy' element={<BuysComponent />} />
           <Route path='/buys' element={<BuysListComponent/>}/>
         </Routes>
+        </main>
         { <FooterComponent /> }
+      </div>
       </BrowserRouter>
     </>
   )
