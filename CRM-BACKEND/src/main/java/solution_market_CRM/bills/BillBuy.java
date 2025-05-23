@@ -48,7 +48,7 @@ public class BillBuy
     }
     public void generateBill(Buys buy, Product product)
     {
-        String nombre = "factura_venta_"+buy.getBuy_id()+".txt";
+        String nombre = "factura_compra_"+buy.getBuy_id()+".txt";
         String ruta = "facturas/facturas_compras/" + nombre;
         LocalDate date = LocalDate.now();
         double importe = buy.getTotal_price();
