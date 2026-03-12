@@ -66,3 +66,8 @@ public class BuyController
     }
 
 }
+
+private ResponseEntity<Buys> getBuyById(int buy_id) {
+    // TODO Auto-generated method stub
+    return null;
+}
