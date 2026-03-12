@@ -66,6 +66,9 @@ public class BuyController
     }
 
 }
+private ResponseEntity<Buys> getByById(int buy_id) {
+    return null;
+}
 
 private ResponseEntity<Buys> getBuyById(int buy_id) {
     return null;
